@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -265,6 +266,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         result = double.parse(num1) * double.parse(num2);
                       } else if (operator == "/") {
                         result = double.parse(num1) / double.parse(num2);
+                      } else if (operator == "\u221A") {
+                        result = sqrt(double.parse(num1));
+                      } else if (operator == "^") {
+                        result = pow(
+                          double.parse(num1),
+                          double.parse(num2),
+                        ).toDouble();
                       }
                       showval = result.toString();
                       num1 = result.toString();
@@ -281,6 +289,79 @@ class _MyHomePageState extends State<MyHomePage> {
                     operator = "/";
                   },
                   child: Text("/", style: TextStyle(fontSize: 40)),
+                ),
+              ],
+            ),
+            SizedBox(height: 10),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  onPressed: () {
+                    // operator = "del";
+                    setState(() {
+                      if (showval.length > 1) {
+                        showval = showval.substring(0, showval.length - 1);
+                      } else if (showval.length == 1 && showval != "0") {
+                        showval = "0";
+                      }
+                      if (operator.isEmpty) {
+                        num1 = showval;
+                      } else {
+                        num2 = showval;
+                      }
+                      if (showval == "0") {
+                        if (operator.isEmpty) {
+                          num1 = "";
+                        } else {
+                          num2 = "";
+                        }
+                      }
+                    });
+                  },
+                  child: Text("del", style: TextStyle(fontSize: 20)),
+                ),
+                SizedBox(width: 10),
+
+                FloatingActionButton(
+                  onPressed: () {},
+                  child: Text("%", style: TextStyle(fontSize: 30)),
+                ),
+                SizedBox(width: 10),
+
+                FloatingActionButton(
+                  onPressed: () {
+                    operator = "^";
+                  },
+                  child: Text("^", style: TextStyle(fontSize: 40)),
+                ),
+                SizedBox(width: 10),
+
+                FloatingActionButton(
+                  onPressed: () {
+                    operator = "\u221A";
+                    setState(() {
+                      if (num1.isNotEmpty) {
+          
+                          double n1 = double.parse(num1);
+                          if (n1 >= 0) {
+                            result = sqrt(n1);
+                            
+                            showval = result.toString();
+                            num1 = result.toString();
+                            num2 = "";
+                            operator = "";
+                          } else {
+                            showval = "Error (Negative)";
+                            num1 = "";
+                            num2 = "";
+                            operator = "";
+                          }
+                      }
+                    });
+                  },
+                  child: Text("\u2713", style: TextStyle(fontSize: 30)),
                 ),
               ],
             ),
