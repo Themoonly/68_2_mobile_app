@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListTile(
             title: Text("เมนูที่ ${index + 1}"),
             subtitle: Text(
-              food.foodname + " price " + food.foodprice + " baht ",
+              "${food.foodname} price ${food.foodprice} baht ",
             ),
           );
         },
