@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
 // print title top bar,
         title: Text(
-          "เลือกเมนูอาหาร      ทั้งหมด : ${countmenu} เมนู      ราคาทั้งหมด : ${totalprice}",
+          "เลือกเมนูอาหาร      ทั้งหมด : $countmenu เมนู      ราคาทั้งหมด : $totalprice",
         ),
       ),
       body: ListView.builder(
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListTile(
             leading: Image.asset(food.images, width: 150),
             title: Text(
-              "${index + 1}" + "." + food.foodname,
+              "${index + 1}" "." + food.foodname,
               style: TextStyle(fontSize: 20),
             ),
             subtitle: Text(
@@ -93,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(" เมนูล่าสุด : ${food.foodname}" ,style: TextStyle(fontSize: 20)),
-                    Text(" รายการทั้งหมด : ${countmenu}" ,style: TextStyle(fontSize: 20)),
-                    Text(" ราคาสุทธิ : ${totalprice}" ,style: TextStyle(fontSize: 20)),
+                    Text(" รายการทั้งหมด : $countmenu" ,style: TextStyle(fontSize: 20)),
+                    Text(" ราคาสุทธิ : $totalprice" ,style: TextStyle(fontSize: 20)),
                   ],
                 ), 
                 
