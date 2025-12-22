@@ -1,4 +1,4 @@
-import 'food.dart';
+import 'foodmenu.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -29,12 +30,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<foodmenu> menu = [
-    foodmenu("กุ้งเผา 1", "600"),
-    foodmenu("กุ้งเผา 2", "500"),
-    foodmenu("กุ้งเผา 3", "400"),
-    foodmenu("กุ้งเผา 4", "300"),
-    foodmenu("กุ้งเผา 5", "200"),
-    foodmenu("กุ้งเผา 6", "100"),
+    foodmenu("กระเพราหมูสับ", "60", "assets/images/m1.jpg"),
+    foodmenu("ผัดไทยกุ้งสุก", "65", "assets/images/m2.jpg"),
+    foodmenu("ซูชิจากเจแปน", "100", "assets/images/m3.jpg"),
+    foodmenu("บาบีคิมเนื้อ", "50", "assets/images/m4.jpg"),
+    foodmenu("ซาลาเปา", "20", "assets/images/m5.jpg"),
+    foodmenu("กุ้งเผาตัวส้ม", "250", "assets/images/m6.jpg"),
+    foodmenu("ต้มมะระ", "55", "assets/images/m7.jpg"),
+    foodmenu("ปลาทอด", "120", "assets/images/m8.jpg"),
+    foodmenu("แหนมเนือง", "150", "assets/images/m9.jpg"),
+    foodmenu("แฮมเบอเกอร์", "45", "assets/images/m10.jpg"),
   ];
 
   int number = 0;
@@ -43,35 +48,35 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("CW4"),
+        title: Text("เลือกเมนูอาหาร"),
       ),
-      // body: Center(child: ListView(children: getdata(40))),
       body: ListView.builder(
         itemCount: menu.length,
         itemBuilder: (BuildContext context, int index) {
           foodmenu food = menu[index];
 
           return ListTile(
-            title: Text("เมนูที่ ${index + 1}"),
-            subtitle: Text(
-              "${food.foodname} price ${food.foodprice} baht ",
+            leading: Image.asset(food.images, width: 150),
+            title: Text(
+              "${index + 1}" + "." + food.foodname,
+              style: TextStyle(fontSize: 20),
             ),
+            subtitle: Text("${food.foodname} price ${food.foodprice} baht "),
+            onTap: () {
+              // print("your menu is " + food.foodname);
+              AlertDialog alert = AlertDialog(
+                title: Text("your menu is " + food.foodname),
+              );
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return alert;
+                },
+              );
+            },
           );
         },
       ),
     );
   }
-
-  // List<Widget> getdata(int count) {
-  //   List<Widget> data = [];
-  //   for (var i = 1; i <= count; i++) {
-  //     var menu = ListTile(
-  //       title: Text('เมนูที่ $i '),
-  //       subtitle: Text("ราคาของเมนูที่ $i"),
-  //     );
-
-  //     data.add(menu);
-  //   }
-  //   return data;
-  // }
 }
