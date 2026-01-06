@@ -41,7 +41,7 @@ class MyHomepage extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return formshopping(productName: '',);
+              return formshopping(productName: '', customerName: '',);
             },
           ),
         );
