@@ -71,7 +71,10 @@ class _InputFormState extends State<InputForm> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return formshopping(productName: _productControllor.text, customerName: _customerController.text,);
+              return formshopping(
+                productName: _productControllor.text,
+                customerName: _customerController.text,
+              );
             },
           ),
         );
