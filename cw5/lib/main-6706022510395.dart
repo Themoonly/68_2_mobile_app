@@ -71,11 +71,11 @@ class _MyhomepageState extends State<Myhomepage> {
             Container(
               child: TextButton(
                 onPressed: () {},
+                style: TextButton.styleFrom(backgroundColor: Colors.purple),
                 child: Text(
                   'submit',
                   style: TextStyle(fontSize: 20, color: Colors.white),
                 ),
-                style: TextButton.styleFrom(backgroundColor: Colors.purple),
               ),
             ),
           ],

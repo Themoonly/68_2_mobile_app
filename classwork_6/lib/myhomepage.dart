@@ -41,13 +41,13 @@ class MyHomepage extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return formshopping(productName: '', customerName: '');
+              return formshopping(productName: '', productDes: '');
             },
           ),
         );
       },
-      child: Text("Go To Shopping"),
       style: OutlinedButton.styleFrom(fixedSize: Size(250, 50)),
+      child: Text("Go To Shopping"),
     );
   }
 
@@ -70,11 +70,11 @@ class MyHomepage extends StatelessWidget {
           ],
         ),
       ),
+      style: ElevatedButton.styleFrom(fixedSize: Size(250, 50), elevation: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [Text("Elevate bunton"), Icon(Icons.add_shopping_cart)],
       ),
-      style: ElevatedButton.styleFrom(fixedSize: Size(250, 50), elevation: 12),
     );
   }
 }

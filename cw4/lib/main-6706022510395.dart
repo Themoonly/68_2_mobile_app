@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListTile(
             leading: Image.asset(food.images, width: 150),
             title: Text(
-              "${index + 1}" "." + food.foodname,
+              "${index + 1}.${food.foodname}",
               style: TextStyle(fontSize: 20),
             ),
             subtitle: Text(

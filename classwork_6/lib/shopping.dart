@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class formshopping extends StatelessWidget {
   const formshopping({
-    super.key, 
+    super.key,
     required this.productName, 
-    required this.customerName, 
+    required this.productDes, 
   });
+  final String productName, productDes;
 
-  final String productName;
-  final String customerName;
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,11 @@ class formshopping extends StatelessWidget {
             children: [
               ListTile(
                 leading: Icon(Icons.account_balance_wallet_outlined),
-                title: Text("productName is ${productName}"),
+                title: Text(productName),
               ),
               ListTile(
                 leading: Icon(Icons.account_balance_sharp),
-                title: Text("customerName is ${customerName}"),
+                title: Text(productDes),
               ),
               ElevatedButton(
                 onPressed: () {

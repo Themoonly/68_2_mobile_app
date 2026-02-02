@@ -8,7 +8,7 @@ class MonneyBox extends StatelessWidget {
   Color colorset;
   double borderRadius;
 
-  MonneyBox(this.title, this.amount, this.sizeconheight, this.colorset,this.borderRadius);
+  MonneyBox(this.title, this.amount, this.sizeconheight, this.colorset,this.borderRadius, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class MonneyBox extends StatelessWidget {
             ),
           Expanded(
             child: Text(
-              '${NumberFormat('#,###.###').format(amount)}',
+              NumberFormat('#,###.###').format(amount),
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.white,
