@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String selectedShap = 'Rectangle';
+  String selectedShap = '';
 
   final heightController = TextEditingController();
   final widthController = TextEditingController();
@@ -51,15 +51,40 @@ class _HomeState extends State<Home> {
                   });
                 },
               ),
+
+              SizedBox(width: 20),
+              RadioListTile<String>(
+                title: Text('Triangle'),
+                value: 'Triangle',
+                groupValue: selectedShap,
+                onChanged: (value) {
+                  setState(() {
+                    selectedShap = value!;
+                  });
+                },
+              ),
+
+              SizedBox(width: 20),
+              RadioListTile<String>(
+                title: Text('Circle'),
+                value: 'Circle',
+                groupValue: selectedShap,
+                onChanged: (value) {
+                  setState(() {
+                    selectedShap = value!;
+                  });
+                },
+              ),
+
               if (selectedShap == 'Rectangle') ...[
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'Height (h)'),
+                  decoration: InputDecoration(labelText: 'Height (cm)'),
                   keyboardType: TextInputType.number,
                   controller: heightController,
                   validator: validateNumber,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(labelText: 'width (h)'),
+                  decoration: InputDecoration(labelText: 'width (cm)'),
                   keyboardType: TextInputType.number,
                   controller: widthController,
                   validator: validateNumber,
@@ -79,11 +104,67 @@ class _HomeState extends State<Home> {
                       );
                     }
                   },
-                  child: Text('Calculator area'),
+                  child: Text('Calculator Area'),
                 ),
               ],
-           //*
-           //*
+
+              if (selectedShap == 'Triangle') ...[
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Height (cm)'),
+                  keyboardType: TextInputType.number,
+                  controller: heightController,
+                  validator: validateNumber,
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Base (cm)'),
+                  keyboardType: TextInputType.number,
+                  controller: widthController,
+                  validator: validateNumber,
+                ),
+
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formkey.currentState?.validate() ?? false) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Tri(
+                            height: double.parse(heightController.text),
+                            base: double.parse(widthController.text),
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text('Calculator Area'),
+                ),
+              ],
+
+              if (selectedShap == 'Circle') ...[
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Radius (cm)'),
+                  keyboardType: TextInputType.number,
+                  controller: heightController,
+                  validator: validateNumber,
+                ),
+
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formkey.currentState?.validate() ?? false) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Cir(radius: double.parse(heightController.text)),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text('Calculator Area'),
+                ),
+              ],
+              //*
+              //*
             ],
           ),
         ),
