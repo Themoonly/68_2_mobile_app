@@ -1,6 +1,5 @@
 import 'package:classwork_6/shopping.dart';
 import 'package:flutter/material.dart';
-import 'shopping.dart';
 
 class MyHomepage extends StatelessWidget {
   const MyHomepage({super.key});

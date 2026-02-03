@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Tri extends StatelessWidget {
   final double height;
   final double base;
-  const Tri({required this.height, required this.base});
+  const Tri({super.key, required this.height, required this.base});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 class Cir extends StatelessWidget {
   final double radius;

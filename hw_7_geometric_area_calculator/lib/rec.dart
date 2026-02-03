@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Rec extends StatelessWidget {
   final double height;
   final double width;
-  const Rec({required this.height, required this.width});
+  const Rec({super.key, required this.height, required this.width});
 
   @override
   Widget build(BuildContext context) {

@@ -29,9 +29,9 @@ class _GradeCalculatorState extends State<GradeCalculator> {
     double total = s1 + s2 + s3;
     String grade = "";
 
-    if (total >= 80)
+    if (total >= 80) {
       grade = "A";
-    else if (total >= 70)
+    } else if (total >= 70)
       grade = "B";
     else if (total >= 60)
       grade = "C";
@@ -69,7 +69,7 @@ class _GradeCalculatorState extends State<GradeCalculator> {
                   groupValue: selectedMajor,
                   onChanged: (val) {
                     setState(() {
-                      selectedMajor = val as String?;
+                      selectedMajor = val;
                     });
                   },
                 ),
@@ -79,7 +79,7 @@ class _GradeCalculatorState extends State<GradeCalculator> {
                   groupValue: selectedMajor,
                   onChanged: (val) {
                     setState(() {
-                      selectedMajor = val as String?;
+                      selectedMajor = val;
                     });
                   },
                 ),

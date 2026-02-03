@@ -26,7 +26,7 @@ class _InputFormState extends State<InputForm> {
   final _productSizeList = ['small', 'Medium', 'Large', 'XLarge'];
   String? _selectedVal = "";
 
-  _MyFormState() {
+  void _MyFormState() {
     _selectedVal = _productSizeList[0];
   }
 
@@ -181,7 +181,7 @@ class _InputFormState extends State<InputForm> {
                 DropdownButton(
                   value: _selectedVal,
                   items: _productSizeList
-                      .map((e) => DropdownMenuItem(child: Text(e), value: e))
+                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                       .toList(),
                   onChanged: (val) {
                     setState(() {
@@ -191,9 +191,9 @@ class _InputFormState extends State<InputForm> {
                 ),
 
                 DropdownButtonFormField(
-                  value: _selectedVal,
+                  initialValue: _selectedVal,
                   items: _productSizeList
-                      .map((e) => DropdownMenuItem(child: Text(e), value: e))
+                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
                       .toList(),
                   onChanged: (val) {
                     setState(() {

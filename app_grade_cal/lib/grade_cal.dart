@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(MaterialApp(home: GradeCalculator()));
 
 class GradeCalculator extends StatefulWidget {
+  const GradeCalculator({super.key});
+
   @override
   _GradeCalculatorState createState() => _GradeCalculatorState();
 }
@@ -25,9 +27,9 @@ class _GradeCalculatorState extends State<GradeCalculator> {
     double total = s1 + s2 + s3;
     String grade = "";
 
-    if (total >= 80)
+    if (total >= 80) {
       grade = "A";
-    else if (total >= 70)
+    } else if (total >= 70)
       grade = "B";
     else if (total >= 60)
       grade = "C";

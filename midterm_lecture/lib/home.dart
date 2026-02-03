@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(color: Colors.grey),
                     ),
                     DropdownButtonFormField(
-                      value: _selectedItem,
+                      initialValue: _selectedItem,
                       isExpanded: true,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           )
                           .toList(),
                       onChanged: (val) =>
-                          setState(() => _selectedItem = val as String?),
+                          setState(() => _selectedItem = val),
                     ),
                   ],
                 ),
