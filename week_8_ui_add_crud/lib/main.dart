@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         leading: const CircleAvatar(
                           radius: 30,
                           backgroundImage: AssetImage(
-                            'assets/images/rocket1.png',
+                            'assets/images/rocket.png',
                           ),
                         ),
                         title: Text('title text (${mylist[index].id})'),
