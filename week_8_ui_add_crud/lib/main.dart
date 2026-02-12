@@ -13,7 +13,7 @@ class Myapp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter demo",
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const MyHomePage(title: "list Example"),
+      home: const MyHomePage(title: "Add list Example"),
     );
   }
 }
@@ -40,6 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int img = 0;
   var list = ['one', 'two', 'three', 'four'];
 
+  final TextEditingController nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,51 +60,93 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   },
                 ),
+                const Text("instagram"),
                 const CircleAvatar(
                   radius: 20,
                   backgroundImage: AssetImage('assets/images/instragram.png'),
                 ),
+                Radio(
+                  value: 2,
+                  groupValue: img,
+                  onChanged: (int? value) {
+                    setState(() {
+                      img = value ?? 0;
+                    });
+                  },
+                ),
+                const Text("Rocket"),
+                const CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage('assets/images/rocket.png'),
+                ),
               ],
             ),
-            const TextField(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'กรอกชื่อรายการ',
+                  hintText: 'พิมพ์ชื่อที่นี้...',
+                  prefixIcon: Icon(Icons.edit),
+                ),
+              ),
+            ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  txt = "add item success";
-                  mylist.add(Data(img, '1', DateTime.now()));
+                  if (nameController.text.isNotEmpty) {
+                    txt = "add item success";
+                    mylist.add(Data(img, nameController.text, DateTime.now()));
+                    nameController.clear();
+                  }
                 });
               },
               child: const Text('add item'),
             ),
-            Text(txt, textScaler: TextScaler.linear(2.0)),
+            Text(txt, textScaler: const TextScaler.linear(2.0)),
             SizedBox(
               width: double.infinity,
-              height: 550,
+              height: 500,
               child: ListView.builder(
                 itemCount: mylist.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
                     width: double.infinity,
-                    height: 80,
+                    height: 100,
                     child: Card(
                       elevation: 5,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       color: Colors.primaries[index % Colors.primaries.length],
                       child: ListTile(
-                        leading: const CircleAvatar(
+                        leading: CircleAvatar(
                           radius: 30,
                           backgroundImage: AssetImage(
-                            'assets/images/rocket.png',
+                            mylist[index].id == 1
+                                ? 'assets/images/instagram.png'
+                                : 'assets/images/rocket.png',
                           ),
                         ),
-                        title: Text('title text (${mylist[index].id})'),
+                        title: Text(
+                          mylist[index].name,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         subtitle: Text(mylist[index].t.toString()),
-                        trailing: const Icon(Icons.delete_rounded),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete_rounded, color: Colors.white),
+                          onPressed: () {
+                            setState(() {
+                              txt = '${mylist[index].name} is removed';
+                              mylist.removeAt(index);
+                            });
+                          },
+                        ),
                         onTap: () {
                           setState(() {
-                            txt = 'title text ($index) is remove';
+                            txt = '${mylist[index].name}  is removed';
                             mylist.removeAt(index);
                           });
                         },

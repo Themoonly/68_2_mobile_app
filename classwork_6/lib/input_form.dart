@@ -1,6 +1,4 @@
 // import 'dart:nativewrappers/_internal/vm/bin/vmservice_io.dart';
-import 'dart:math';
-import 'dart:ui';
 import 'package:classwork_6/shopping.dart';
 import 'package:flutter/material.dart';
 
